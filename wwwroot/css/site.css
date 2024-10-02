@@ -1,0 +1,114 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color:#f1f1f1f1;
+}
+h2{
+    width:100%;
+    font-size:20px;
+    text-transform:uppercase;
+    font-weight:900;
+    margin:15px ;
+    margin-top:50px;
+    text-align:center;
+}
+tr
+{
+    width:fit-content;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height:50px;
+}
+td
+{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    width:fit-content;
+    min-width:150px;
+    padding:15px;
+    margin-right:15px;
+}
+th {
+    font-size:18px;
+    font-weight:900;
+    text-transform:uppercase;
+    width: fit-content;
+    min-width: 150px;
+    padding: 25px;
+    margin-right: 25px;
+    /*padding: 25px;*/
+}
+.copyRight
+{
+    width:100%;
+    height:fit-content;
+    display:flex;
+    justify-content:center;
+    /*align-items:center;*/
+    position:relative;
+    bottom:0;
+}
+.tableConatiner
+{
+    width:100vw;
+    height:auto;
+    display:flex;
+    justify-content:flex-start;
+    align-items:flex-start;
+    background-color:red;
+    position:relative;
+    left:0;
+    margin-left:0px;
+}
+.tetus {
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    top: auto;
+    margin-left: 0px;
+    /*background-color: blue;*/
+}
+table
+{
+    width:100vw;
+    height:fit-content;
+    border-collapse:collapse;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.tr td
+{
+
+     width:12%;
+    padding:25px;
+    border:none;
+    
+}
+.tr .btntd {
+    width: fit-content;
+    margin: 10px;
+    padding: 0px;
+    /*background-color: red;*/
+    min-width: fit-content;
+
+}
+.tr .btntd:nth-child(1) {
+    margin-left: 50px;
+}

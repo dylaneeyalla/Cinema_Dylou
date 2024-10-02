@@ -1,0 +1,137 @@
+﻿@* @*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@* @{
+} *@
+@model GestionCinema.Models.film
+
+@{
+    ViewBag.Title = "Supprimer Film";
+}
+
+<h2 style="color:red;">est vous sur de vouloir supprimer l'acteur : <strong style="color:black;">@Model.Nom</strong></h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="col-md-8">
+        <form asp-action="Delete">
+            <fieldset>
+                @* <legend>film</legend> *@
+
+                <div class="form-group editor-label">
+                    @Html.LabelFor(model => model.Nom)
+                    @* <label>Nom</label> *@
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="text" placeholder="Nom" name="Nom" class="form-control" value="@Model.Nom" required />
+                    @* @Html.EditorFor(model => model.Nom) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.Nom)
+                    </p>
+
+                </div>
+
+                <div class="form-group editor-label">
+                    @Html.LabelFor(model => model.Description)
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="text" placeholder="Description" name="Description" class="form-control" value="@Model.Description" required />
+
+                    @* @Html.EditorFor(model => model.Biographie) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </p>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.photo)
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="text" placeholder="photo" name="photo" class="form-control" value="@Model.photo" required />
+
+                    @* @Html.EditorFor(model => model.photoProfil) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.photo)
+                    </p>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Prix)
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="text" placeholder="Prix" name="Prix" class="form-control" asp-for="Prix" required />
+
+                    @* @Html.EditorFor(model => model.photoProfil) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.Prix)
+                    </p>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Debut)
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="date" placeholder="Debut" name="Debut" class="form-control" asp-for="Debut" required />
+
+                    @* @Html.EditorFor(model => model.photoProfil) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.Debut)
+                    </p>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fin)
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="date" placeholder="Fin" name="Fin" class="form-control" asp-for="Fin" required />
+
+                    @* @Html.EditorFor(model => model.photoProfil) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.Fin)
+                    </p>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FilmCategorie)
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="text" placeholder="FilmCategorie" name="FilmCategorie" class="form-control" asp-for="FilmCategorie" required />
+
+                    @* @Html.EditorFor(model => model.photoProfil) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.FilmCategorie)
+                    </p>
+                </div>
+                <p class="mb-5">
+                    <input type="submit" value="Delete" class="btn btn-danger" asp-controller="Film" />
+                    <a class="btn btn-success" asp-action="VoirFilm" asp-controller="Film">Back To list</a>
+                </p>
+            </fieldset>
+
+
+        </form>
+    </div>
+}
+
+@* <div class="btn btn-success ">
+    @Html.ActionLink("Back to List", "Index")
+</div> *@
+
+@* @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+} *@
+<!--Ajouter la previsualisation d'une photo de profile avec JQUERY-->
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('photoProfilepreview');
+            output.src = $("#photoProfile").val();
+        })
+        $("#photoProfile").on("change", function () {
+            var output = document.getElementById('photoProfilpreview');
+            output.src = $(this).val();
+        })
+    </script>
+    <!--FIN-->
+}
+

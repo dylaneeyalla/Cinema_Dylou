@@ -1,0 +1,136 @@
+﻿@* @*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@* @{
+} *@
+@model GestionCinema.Models.film
+
+@{
+    ViewBag.Title = "Create Film";
+}
+
+<h2>Ajouter un nouveau Film</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <form asp-action="Create">
+        <div class="col-md-8">
+            <fieldset>
+                @* <legend>Acteurs</legend> *@
+
+                <div class="form-group editor-label">
+                    @Html.LabelFor(model => model.Nom)
+                    @* <label>Nom</label> *@
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="text" placeholder="Nom" name="Nom" class="form-control" />
+                    @* @Html.EditorFor(model => model.Nom) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.Nom)
+                    </p>
+
+                </div>
+
+                <div class="form-group editor-label">
+                    @Html.LabelFor(model => model.Description)
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="text" placeholder="Description" name="Description" class="form-control" />
+
+                    @* @Html.EditorFor(model => model.Biographie) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </p>
+
+                </div>
+                <div class="form-group editor-label">
+                    @Html.LabelFor(model => model.photo)
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="text" placeholder="photo" name="photo" class="form-control" />
+
+                    @* @Html.EditorFor(model => model.Biographie) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.photo)
+                    </p>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Prix)
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="text" placeholder="Prix" asp-for="Prix" class="form-control" />
+
+                    @* @Html.EditorFor(model => model.photoProfil) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.Prix)
+                    </p>
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="date" placeholder="Date" name="Date" class="form-control" />
+
+                    @* @Html.EditorFor(model => model.photoProfil) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.Debut)
+                    </p>
+                </div>
+                <div class=" form-group editor-field">
+                    <input type="date" placeholder="Date Fin" name="Fin" class="form-control" />
+
+                    @* @Html.EditorFor(model => model.photoProfil) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.Fin)
+                    </p>
+                </div>
+      
+                <div class=" form-group editor-field">
+                    <select class="form-control" name="FilmCategorie">
+                        <option value="Action">Action</option>
+                        <option value="Comedie">Comedie</option>
+                        <option value="Aventure">Aventure</option>
+                        <option value="Amour">Amour</option>
+                        <option value="Horreur">Horreur</option>
+                        <option value="Documentaire">Documentaire</option>
+                        <option value="Animation">Animation</option>
+                    </select>
+                
+                    @* @Html.EditorFor(model => model.photoProfil) *@
+                    <p style="color:red;">
+                        @Html.ValidationMessageFor(model => model.FilmCategorie)
+                    </p>
+                </div>
+                <div>
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <a class="btn btn-success text-light" asp-action="VoirFilm">Back to List</a>
+                </div>
+
+            </fieldset>
+        </div>
+
+    </form>
+
+}
+
+
+
+@* @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+} *@
+<!--Ajouter la previsualisation d'une photo de profile avec JQUERY-->
+@section Scripts
+{
+    <script>
+        $(document).ready(function () {
+            var output = document.getElementById('photoProfilepreview');
+            output.src = $("#photoProfile").val();
+        })
+        $("#photoProfile").on("change", function () {
+            var output = document.getElementById('photoProfilpreview');
+            output.src = $(this).val();
+        })
+    </script>
+    <!--FIN-->
+}
+

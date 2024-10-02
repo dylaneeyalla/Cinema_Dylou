@@ -1,0 +1,87 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@* @{
+} *@
+@model IEnumerable<GestionCinema.Models.film>
+
+@{
+    ViewBag.Title = "Listes des Films";
+}
+
+<h2>Listes de tout les Films</h2>
+
+@* <table class="mx-5 col-md-12 justify-content-center align-items-center"> *@
+ <table class="table"> 
+
+    <tr class="tr">
+        <th >
+            @Html.DisplayNameFor(model => model.Nom)
+        </th>
+            <th >
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+            <th >
+            @Html.DisplayNameFor(model => model.Prix)
+        </th>
+            <th >
+            @Html.DisplayNameFor(model => model.Debut)
+        </th>
+            <th >
+            @Html.DisplayNameFor(model => model.Fin)
+        </th>
+            <th >
+            @Html.DisplayNameFor(model => model.FilmCategorie)
+        </th>
+        <th class="mx-2   text-center col-md-3"> Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        @* <tr class="col-md-9 justify-content-center align-items-center"> *@
+         <tr class="tr"> 
+            <td >
+                @Html.DisplayFor(modelItem => item.Nom)
+            </td>
+
+           @*  <th class="align-middle justify-content-around col-md-2">
+                <img class="rounded-circle" src="@item.photo" alt="Photo Film" style="width:80px; height:80px;" />
+            </th> *@
+                <td >
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+                <td >
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+                <td >
+                @Html.DisplayFor(modelItem => item.Debut)
+            </td>
+                <td >
+                @Html.DisplayFor(modelItem => item.Fin)
+            </td>
+                <td class="col-md-1">
+                @Html.DisplayFor(modelItem => item.FilmCategorie)
+            </td>
+            <td class="btntd">
+                @* <a class="btn btn-outline-primary" asp-action="Edit" asp-asp-route-id="@item.Id"> </a> *@
+                <a asp-action="Edit" asp-controller="Film" asp-route-id="@item.Id" class="btn btn-success" > <i class="bi bi-pencil"></i> Modifier</a>
+                @* <i class="bi bi-pencil"></i> @Html.ActionLink("Modifier", "Edit", new { id = item.Id }) *@
+            </td>
+                <td class="btntd"> 
+                <a asp-action="Details" asp-controller="Film" asp-route-id="@item.Id" class="btn btn-primary" > <i class="bi bi-plus"></i> Details</a>
+                @* <i class="bi bi-pencil"></i> @Html.ActionLink("Details", "Details", new { id = item.Id }) *@
+            </td>
+            @* <td><a asp-controller="Acteurs" asp-action="Details" asp-route-id="@item.Id" class=" btn btn-primary"> <i class="bi bi-pencil"></i>Details</a></td> *@
+            <td class="col-md-1 btntd"><a asp-controller="Film" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger"><i class="bi bi-trash-fill"></i> Supprimer</a></td>
+            @* <td class="btn btn-outline-info"> <i class="bi bi-pencil"></i>  @Html.ActionLink("Details", "Details", new { id = item.Id })</td> *@
+            @* <td class="btn btn-danger "><i class="bi bi-trash-fill"></i>    @Html.ActionLink("Supprimer", "Delete", new { id = item.Id }) </td> *@
+        </tr>
+        <div style="position:fixed;right:25px;bottom:120px;">
+            <a asp-action="Create" asp-controller="Film" class="btn btn-success"><i class="bi bi-plus"></i>Ajouter un Film</a>
+        </div>
+
+    }
+
+</table>
+
+
